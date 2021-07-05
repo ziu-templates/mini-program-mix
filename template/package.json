@@ -1,0 +1,66 @@
+{
+    "name": "{{ name }}",
+    "version": "1.0.0",
+    "description": "{{ description }}",
+    "author": "{{ author }}",
+    "private": true,
+    "scripts": {
+        "start": "npm run dev",
+        "fix:scss": "npm run lint:scss -- --fix",
+        "lint": "eslint --ext .ts --ext .tsx src -c .eslintrc.js",
+        "lint:scss": "stylelint src/**/*.scss --config .stylelintrc",
+        "api": "mipp-api src/**/*/apiList.ts -o src/typings/Api/index.d.ts",
+        "commit": "git-cz --disable-emoji",
+        {{#gitCommitMsg}}
+        "prepare": "husky install",
+        "husky": "npm run prepare && npm run commit-msg && npm run pre-push",
+        "commit-msg": "husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'",
+        "pre-push": "husky add .husky/pre-push 'npm run test && npm run lint:scss'",
+        "unhusky": "husky uninstall",
+        {{/gitCommitMsg}}
+        {{#changelog}}
+        "cl": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1000",
+        "postversion": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2 && git add CHANGELOG.md package.json && git add -u",
+        {{/changelog}}
+        "dev": "npm run build -- development",
+        "build": "ziu-server --config scripts/config.js",
+        "staging": "npm run build -- staging",
+        "testing": "npm run build -- testing",
+        "report": "npm run build -- production -r"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.22.0",
+        "@typescript-eslint/parser": "^4.22.0",
+        "eslint-config-ziu": "^1.1.4",
+        "eslint-plugin-import": "^2.22.1",
+        "stylelint-config-ziu": "^1.1.0",
+        "globby": "^11.0.3",
+        "lodash.merge": "^4.6.2",
+        "yaml": "^1.10.2",
+        "stylelint": "^13.13.0",
+        "postcss": "^8.2.12",
+        {{#gitCommitMsg}}
+        "commitlint": "^12.1.1",
+        "husky": "^6.0.0",
+        "conventional-changelog": "^3.1.24",
+        "conventional-changelog-cli": "^2.1.1",
+        "git-cz": "^4.7.6",
+        {{/gitCommitMsg}}
+        "mipp-api-typing": "^1.1.0",
+        "ziu-server": "1.3.20"
+    },
+    "engines": {
+        "node": ">= 10.0.0",
+        "npm": ">= 3.0.0"
+    },
+    "dependencies": {
+        {{#if_eq type "weapp"}}
+        "mipp": "^1.2.8",
+        "weapp-api-typings": "^1.1.4",
+        {{/if_eq}}
+        {{#if_eq type "aliapp"}}
+        "mipp-ali": "^1.1.9",
+        {{/if_eq}}
+        "miniapp-utils": "^1.2.2"
+    }
+}
