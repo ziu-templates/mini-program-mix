@@ -1,4 +1,5 @@
 const { join } = require("path");
+const CopyWechatOriginalPlugin = require("copy-wechat-original-webpack-plugin");
 const projectConfig = require("./project.config");
 const envData = require("./getEnvData");
 
@@ -88,7 +89,13 @@ module.exports = {
 
   fallback: {},
 
-  plugins: [],
+  plugins: [
+    new CopyWechatOriginalPlugin({
+      cwd: process.cwd(),
+      originalPath: "/src/__original__/",
+      dist: getDist(),
+    }),
+  ],
 };
 
 function getDist() {
