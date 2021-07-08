@@ -35,10 +35,9 @@ module.exports = {
         },
       ],
     },
-    tab: {
-      when: "type",
+    useTest: {
       type: "confirm",
-      message: "Use Tab?",
+      message: "是否增加单元测试(Jest)?",
     },
     gitCommitMsg: {
       type: "confirm",
@@ -49,9 +48,17 @@ module.exports = {
       type: "confirm",
       message: "Use CHANGELOG to your project?",
     },
+    tab: {
+      when: "type",
+      type: "confirm",
+      message: "Use Tab?",
+    },
   },
   filters: {
     "src/assets/imgs/tab.png": "tab",
+    "src/jest.config.js": "useTest",
+    "src/__tests__": "useTest",
+    "src/__mocks__": "useTest",
     "src/pages/index/index.axml": "type === 'aliapp'",
     "src/pages/index/index.wxml": "type === 'weapp'",
     // '.eslintrc.js': 'lint',

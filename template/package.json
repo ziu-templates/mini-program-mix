@@ -5,6 +5,11 @@
     "author": "{{ author }}",
     "private": true,
     "scripts": {
+        {{#useTest}}
+        "test": "npm run lint && npm run test:coverage -- --coverageReporters=text",
+        "test:watch": "jest --watchAll",
+        "test:coverage": "jest --coverage",
+        {{/useTest}}
         "start": "npm run dev",
         "fix:scss": "npm run lint:scss -- --fix",
         "lint": "eslint --ext .ts --ext .tsx src -c .eslintrc.js",
@@ -15,7 +20,7 @@
         "prepare": "husky install",
         "husky": "npm run prepare && npm run commit-msg && npm run pre-push",
         "commit-msg": "husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'",
-        "pre-push": "husky add .husky/pre-push 'npm run test && npm run lint:scss'",
+        "pre-push": "husky add .husky/pre-push '{{#useTest}}npm run test && {{/useTest}}npm run lint:scss'",
         "unhusky": "husky uninstall",
         {{/gitCommitMsg}}
         {{#changelog}}
@@ -46,6 +51,10 @@
         "conventional-changelog-cli": "^2.1.1",
         "git-cz": "^4.7.6",
         {{/gitCommitMsg}}
+        {{#useTest}}
+        "jest": "^27.0.6",
+        "ts-jest": "^27.0.3",
+        {{/useTest}}
         "copy-wechat-original-webpack-plugin": "0.0.8",
         "mipp-api-typing": "^1.1.0",
         "ziu-server": "^1.3.21"
