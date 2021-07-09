@@ -55,7 +55,7 @@
         "jest": "^27.0.6",
         "ts-jest": "^27.0.3",
         {{/useTest}}
-        "copy-wechat-original-webpack-plugin": "0.0.13",
+        "copy-wechat-original-webpack-plugin": "0.0.14",
         "mipp-api-typing": "^1.1.0",
         "ziu-server": "^1.3.21"
     },
