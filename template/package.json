@@ -71,6 +71,6 @@
         {{#if_eq type "aliapp"}}
         "mipp-ali": "^1.1.9",
         {{/if_eq}}
-        "miniapp-utils": "^1.2.2"
+        "miniapp-utils": "^1.2.5"
     }
 }
