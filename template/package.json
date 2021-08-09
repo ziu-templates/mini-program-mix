@@ -57,7 +57,7 @@
         {{/useTest}}
         "copy-wechat-original-webpack-plugin": "0.0.14",
         "mipp-api-typing": "^1.1.0",
-        "ziu-server": "^1.3.25"
+        "ziu-server": "^1.4.0"
     },
     "engines": {
         "node": ">= 10.0.0",
