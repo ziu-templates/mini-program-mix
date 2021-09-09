@@ -2,12 +2,13 @@ const path = require("path"),
   fs = require("fs"),
   glob = require("globby"),
   YAML = require("yaml"),
+  git = require("git-rev-sync"),
   merge = require("lodash.merge");
 
 let version = "";
 
 try {
-  version = process.env.npm_package_version;
+  version = getLatestTag() || process.env.npm_package_version;
 } catch (e) {
   console.error(e);
 }
@@ -44,3 +45,13 @@ function getEnvData(url = "", envDataCwd = process.cwd()) {
 }
 
 module.exports = JSON.stringify(envMergeData);
+
+function getLatestTag() {
+  const tag = git.tag();
+
+  if (!/^v\d+\.\d+\.\d+/.test(tag) || Number.isNaN(tag)) {
+    return "";
+  }
+
+  return tag;
+}
