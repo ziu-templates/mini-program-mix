@@ -60,7 +60,7 @@
         "mipp-api-typing": "^1.1.0",
         "git-rev-sync": "^3.0.1",
         "rimraf": "^3.0.2",
-        "ziu-server": "^1.4.2"
+        "ziu-server": "^1.4.3"
     },
     "engines": {
         "node": ">= 10.0.0",
