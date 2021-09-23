@@ -69,7 +69,7 @@
     "dependencies": {
         {{#if_eq type "weapp"}}
         "mipp": "^1.2.8",
-        "weapp-api-typings": "^1.1.4",
+        "weapp-api-typings": "^1.1.8",
         {{/if_eq}}
         {{#if_eq type "aliapp"}}
         "mipp-ali": "^1.1.9",
