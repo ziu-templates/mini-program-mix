@@ -15,7 +15,7 @@
     "allowJs": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "noImplicitThis": false,
+    "noImplicitThis": true,
     "incremental": true,
     "esModuleInterop": true,
     "noEmit": true
