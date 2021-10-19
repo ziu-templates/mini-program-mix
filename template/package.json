@@ -44,6 +44,7 @@
         "yaml": "^1.10.2",
         "stylelint": "^13.13.0",
         "postcss": "^8.2.12",
+        "jsonfile": "^6.1.0",
         {{#gitCommitMsg}}
         "commitlint": "^12.1.1",
         "husky": "^6.0.0",
