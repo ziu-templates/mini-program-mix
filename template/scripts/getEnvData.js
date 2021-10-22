@@ -2,16 +2,8 @@ const path = require("path"),
   fs = require("fs"),
   glob = require("globby"),
   YAML = require("yaml"),
-  git = require("git-rev-sync"),
+  { queryLatestTag } = require("git-helps"),
   merge = require("lodash.merge");
-
-let version = "";
-
-try {
-  version = getLatestTag() || process.env.npm_package_version;
-} catch (e) {
-  console.error(e);
-}
 
 const cwd = path.join(process.cwd(), "config"),
   globConfig = {
@@ -20,6 +12,23 @@ const cwd = path.join(process.cwd(), "config"),
   },
   PRJ_ENV = process.env.PRJ_ENV || process.env.NODE_ENV || "production",
   defaultEnvPath = glob.sync("default.*(yaml|yml)", globConfig)[0] || "";
+
+let version = queryLatestTag();
+if (PRJ_ENV === "testing" || PRJ_ENV === "development") {
+  version = queryLatestTag({
+    match: "v*-testing",
+  });
+} else {
+  if (version.includes("-testing")) {
+    throw new Error(`Tag Error; Git Tag: ${version}；ENV：${PRJ_ENV}；`);
+  }
+}
+
+try {
+  version = version || process.env.npm_package_version;
+} catch (e) {
+  console.error(e);
+}
 
 if (!defaultEnvPath) {
   throw new Error(`config dir must include default.yml or default.yaml`);
@@ -45,13 +54,3 @@ function getEnvData(url = "", envDataCwd = process.cwd()) {
 }
 
 module.exports = JSON.stringify(envMergeData);
-
-function getLatestTag() {
-  const tag = git.tag();
-
-  if (!/^v\d+\.\d+\.\d+/.test(tag) || Number.isNaN(tag)) {
-    return "";
-  }
-
-  return tag;
-}

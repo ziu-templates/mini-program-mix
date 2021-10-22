@@ -59,7 +59,7 @@
         {{/useTest}}
         "copy-wechat-original-webpack-plugin": "0.0.14",
         "mipp-api-typing": "^1.1.0",
-        "git-rev-sync": "^3.0.1",
+        "git-helps": "0.0.3",
         "rimraf": "^3.0.2",
         "ziu-server": "^1.4.3"
     },
