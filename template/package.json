@@ -19,8 +19,8 @@
         {{#gitCommitMsg}}
         "prepare": "rimraf .husky && npm run husky",
         "husky": "husky install && npm run commit-msg && npm run pre-push",
-        "commit-msg": "husky add .husky/commit-msg 'npx --no-install commitlint --edit $1'",
-        "pre-push": "husky add .husky/pre-push '{{#useTest}}npm run test && {{/useTest}}npm run lint:scss'",
+        "commit-msg": "husky add .husky/commit-msg \"npx --no-install commitlint --edit $1\"",
+        "pre-push": "husky add .husky/pre-push \"{{#useTest}}npm run test && {{/useTest}}npm run lint:scss\"",
         "unhusky": "husky uninstall",
         {{/gitCommitMsg}}
         {{#changelog}}
@@ -61,7 +61,7 @@
         "mipp-api-typing": "^1.1.0",
         "git-helps": "0.0.3",
         "rimraf": "^3.0.2",
-        "ziu-server": "^1.4.3"
+        "ziu-server": "^1.4.9"
     },
     "engines": {
         "node": ">= 10.0.0",
