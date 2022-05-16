@@ -111,7 +111,7 @@ module.exports = {
     // allow debugger during development
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
     "no-warning-comments": process.env.TODO ? [2, {
-      terms: ["todo", "fixme", "xxx", "mock", "test"],
+      terms: ["todo", "fixme", "xxx", "mock", "test", "review"],
       location: "start",
     }] : 0,
   },
