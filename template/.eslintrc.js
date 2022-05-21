@@ -1,5 +1,43 @@
 // http://eslint.org/docs/user-guide/configuring
 
+function getCommentsRule() {
+  if (process.env.NODE_ENV === "development") {
+    return 0;
+  }
+
+  if (process.env.TODO) {
+    return [
+      2,
+      {
+        terms: ["todo", "fixme", "xxx", "mock", "test",],
+        location: "start",
+      },
+    ];
+  }
+
+  if (process.env.REVIEW) {
+    return [
+      2,
+      {
+        terms: ["review"],
+        location: "start",
+      },
+    ];
+  }
+
+  if (process.env.TEMP) {
+    return [
+      2,
+      {
+        terms: ["temp"],
+        location: "start",
+      },
+    ];
+  }
+
+  return 0;
+}
+
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
@@ -110,9 +148,6 @@ module.exports = {
     "generator-star-spacing": 0,
     // allow debugger during development
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
-    "no-warning-comments": process.env.TODO ? [2, {
-      terms: ["todo", "fixme", "xxx", "mock", "test", "review"],
-      location: "start",
-    }] : 0,
+    "no-warning-comments": getCommentsRule(),
   },
 };

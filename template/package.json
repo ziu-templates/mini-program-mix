@@ -15,6 +15,8 @@
         "lint": "eslint --ext .ts --ext .tsx src -c .eslintrc.js",
         "lint:scss": "stylelint src/**/*.scss --config .stylelintrc",
         "lint:todo": "cross-env NODE_ENV=production TODO=true npm run lint",
+        "review": "cross-env NODE_ENV=production REVIEW=true npm run lint",
+        "temp": "cross-env NODE_ENV=production TEMP=true npm run lint",
         "api": "mipp-api src/**/*/apiList.ts -o src/typings/Api/index.d.ts",
         "commit": "git-cz --disable-emoji",
         {{#gitCommitMsg}}
