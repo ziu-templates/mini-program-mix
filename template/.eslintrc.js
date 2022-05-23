@@ -25,7 +25,7 @@ function getCommentsRule() {
     ];
   }
 
-  if (process.env.TEMP) {
+  if (process.env.TEMP_NOTES) {
     return [
       2,
       {
