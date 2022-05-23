@@ -98,6 +98,7 @@ module.exports = {
     }),
     miniProgramSourceMap,
   ],
+  ignoreEntry: ["^plugin://", "^antd-mini-rpx"],
 };
 
 function getDist() {
