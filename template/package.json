@@ -65,7 +65,7 @@
         "mipp-api-typing": "^1.1.0",
         "git-helps": "0.0.3",
         "rimraf": "^3.0.2",
-        "ziu-server": "^1.4.9"
+        "ziu-server": "^1.5.0"
     },
     "engines": {
         "node": ">= 10.0.0",
