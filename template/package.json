@@ -32,8 +32,8 @@
         {{/changelog}}
         "dev": "ziu-server --config scripts/config.js -- development",
         "build": "npm run lint:todo && ziu-server --config scripts/config.js",
-        "staging": "npm run lint:todo && npm run build -- staging",
-        "testing": "npm run lint:todo && npm run build -- testing",
+        "staging": "npm run build -- staging",
+        "testing": "npm run build -- testing",
         "report": "npm run build -- production -r"
     },
     "devDependencies": {
