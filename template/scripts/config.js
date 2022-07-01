@@ -3,6 +3,7 @@ const jsonfile = require("jsonfile");
 const CopyWechatOriginalPlugin = require("copy-wechat-original-webpack-plugin");
 const projectConfig = require("./project.config");
 const envData = require("./getEnvData");
+const autoImportGlobalLib = require("./global/globalPlugin");
 
 const root = "src";
 
@@ -97,6 +98,7 @@ module.exports = {
       dist: getDist(),
     }),
     miniProgramSourceMap,
+    ...autoImportGlobalLib({{#if_eq type "aliapp"}}"aliapp"{{/if_eq}}).plugins
   ],
   ignoreEntry: ["^plugin://", "^antd-mini-rpx"],
   {{#if_eq type "aliapp"}}
