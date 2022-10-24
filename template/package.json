@@ -37,8 +37,8 @@
         "report": "npm run build -- production -r"
     },
     "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^4.22.0",
-        "@typescript-eslint/parser": "^4.22.0",
+        "@typescript-eslint/eslint-plugin": "^5.40.1",
+        "@typescript-eslint/parser": "^5.40.1",
         "eslint-config-ziu": "^1.1.4",
         "eslint-plugin-import": "^2.22.1",
         "stylelint-config-ziu": "^1.1.1",
