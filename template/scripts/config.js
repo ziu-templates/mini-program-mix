@@ -16,6 +16,11 @@ module.exports = {
     app: "src/app.json", // 该行固定格式
     outside: "src/outside/**/*/app.json",
   },
+  script: {
+    useBabelInTS: true,
+    babelPresetsModules: "commonjs",
+    useLogBeautify: true,
+  },
   {{#if_eq type "weapp"}}
   entrySuffix: {
     js: "ts",
