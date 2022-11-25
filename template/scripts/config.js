@@ -21,7 +21,7 @@ module.exports = {
     useBabelInTS: true,
     babelPresetsModules: "commonjs",
     useLogBeautify: true,
-    babelPlugins: isMockEnv ? ["babel-plugin-aff-mock"] : [],
+    babelPlugins: isMockEnv() ? ["babel-plugin-aff-mock"] : [],
   },
   {{#if_eq type "weapp"}}
   entrySuffix: {
