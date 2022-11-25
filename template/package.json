@@ -31,6 +31,7 @@
         "postversion": "conventional-changelog -p angular -i CHANGELOG.md -s -r 2 && git add CHANGELOG.md package.json && git add -u",
         {{/changelog}}
         "dev": "ziu-server --config scripts/config.js -- development",
+        "dev:mock": "ziu-server --config scripts/config.js --mock -- development",
         "build": "npm run lint:todo && ziu-server --config scripts/config.js",
         "staging": "npm run build -- staging",
         "testing": "npm run build -- testing",
@@ -65,7 +66,7 @@
         "mipp-api-typing": "^1.1.0",
         "git-helps": "0.0.3",
         "rimraf": "^3.0.2",
-        "ziu-server": "^1.10.0"
+        "ziu-server": "^1.10.2"
     },
     "engines": {
         "node": ">= 10.0.0",

@@ -4,6 +4,7 @@ const CopyWechatOriginalPlugin = require("copy-wechat-original-webpack-plugin");
 const projectConfig = require("./project.config");
 const envData = require("./getEnvData");
 const autoImportGlobalLib = require("./global/globalPlugin");
+const { isMockEnv } = require("ziu-server/lib/configUtils");
 
 const root = "src";
 
@@ -20,6 +21,7 @@ module.exports = {
     useBabelInTS: true,
     babelPresetsModules: "commonjs",
     useLogBeautify: true,
+    babelPlugins: isMockEnv ? ["babel-plugin-aff-mock"] : [],
   },
   {{#if_eq type "weapp"}}
   entrySuffix: {
