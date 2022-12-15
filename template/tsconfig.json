@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "lib": [
       "ES6",
       "ES7",
@@ -18,7 +18,10 @@
     "noImplicitThis": true,
     "incremental": true,
     "esModuleInterop": true,
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "exclude": [
     "node_modules",

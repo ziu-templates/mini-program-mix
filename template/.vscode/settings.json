@@ -1,8 +1,13 @@
 
 // Place your settings in this file to overwrite default and user settings.
-{{#if_eq type "weapp"}}
 {
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src"
+  },
+  "path-intellisense.ignoreTsConfigBaseUrl": true,
+  "path-intellisense.absolutePathTo": "${workspaceRoot}/src",
   "json.schemas": [
+    {{#if_eq type "weapp"}}
     {
       "fileMatch": ["/app.json"],
       "url": "https://raw.githubusercontent.com/bugszhou/mini-program-json-schema/main/src/wechatApp.json"
@@ -11,8 +16,8 @@
       "fileMatch": ["/index.json"],
       "url": "https://raw.githubusercontent.com/bugszhou/mini-program-json-schema/main/src/wechatPage.json"
     }
+    {{/if_eq}}
+    {{#if_eq type "aliapp"}}
+    {{/if_eq}}
   ]
 }
-{{/if_eq}}
-{{#if_eq type "aliapp"}}
-{{/if_eq}}

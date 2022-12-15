@@ -68,6 +68,10 @@ module.exports = {
       node: {
         extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts"],
       },
+      alias: {
+        map: [["@", "./src"]],
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".d.ts", ".aliapp.ts", ".weapp.ts"],
+      },
     },
     "import/ignore": [
       "node_modules",
